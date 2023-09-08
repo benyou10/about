@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: death;
+  src: url(/home/youcef/Desktop/r3f-vite-starter/src/death_star/Death Star.otf);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+.btn.butoom{
+  top: 800px;right: 35px;
+}
+
+.btn {
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  top: 120px;
+  right: 50px;
+  color: #CEB7FF;
+  cursor: pointer;
+  display: flex;
+  font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  padding: 1rem;
+}
+
+.btn:before {
+  background-color: #fff;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  margin-right: 10px;
+  transition: all .42s cubic-bezier(.25,.8,.25,1);
+  width: 0;
+}
+
+.btn:hover:before {
+  background-color: #fff;
+  width: 3rem;
+}
+body {
+
+  margin: 0;
+}
+.youcef {
+  position: absolute !important;
+  top: 80px !important;
+ right: 50%;
+ left: 50%;
+ transform: translateX(-50%);
+  font-family: death;
+  
+  letter-spacing: 4px; /* Adds 4px of space between each character */
+  text-align: center; /* Centers the text horizontally */
+   /* Applies the "death" font (if available) */
+  width: 1000px !important; /* Sets the width of the element to 1000px */
+  font-size: 100px; /* Sets the font size to 100px */
+ color: transparent;
+ text-shadow: #CEB7FF;
+ -webkit-text-stroke: 1.5px #CEB7FF;
+}
