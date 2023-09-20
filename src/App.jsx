@@ -2,7 +2,7 @@ import { AdaptiveDpr, CameraShake, Preload, Scroll, ScrollControls } from "@reac
 import { Canvas, useFrame } from "@react-three/fiber";
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Experience } from "./components/Experience";
 import { Interface } from "./components/interface";
@@ -16,19 +16,22 @@ function App() {
   const [section, setSection] = useState(0);
   const [menuOpened, setMenuOpened] = useState(false);
   const [cv, setcv] = useState(false);
+  const sceneGroupRef = useRef();
+  const [rightBurst, setrightBurst] = useState(false);
+  const [leftBurst, setleftBurst] = useState(false);
 
-const [posZ , setpoZ] = useState(8);
+
 const config = {
-  maxYaw: 0.06, // Max amount camera can yaw in either direction
-  maxPitch: 0.06, // Max amount camera can pitch in either direction
-  maxRoll: 0.06, // Max amount camera can roll in either direction
-  yawFrequency: 0.06, // Frequency of the the yaw rotation
-  pitchFrequency: 0.06, // Frequency of the pitch rotation
-  rollFrequency: 0.06, // Frequency of the roll rotation
-  intensity: 1, // initial intensity of the shake
-  decay: false, // should the intensity decay over time
-  decayRate: 0.65, // if decay = true this is the rate at which intensity will reduce at
-  controls: undefined, // if using orbit controls, pass a ref here so we can update the rotation
+  maxYaw: cv == true ? 0.03   :0.09, 
+  maxPitch: cv == true ? 0.03    :0.09,
+  maxRoll: cv == true ? 0.03    :0.09,
+  yawFrequency: cv == true ? 0.03    :0.09, 
+  pitchFrequency: cv == true ? 0.03    :0.09, 
+  rollFrequency:  cv == true ? 0.03    :0.09,
+  intensity: 1, 
+  decay: false, 
+  decayRate: 0.65, 
+  controls: undefined, 
 }
 
   return (
@@ -39,22 +42,22 @@ const config = {
         }}
       >
         
-        <Canvas shadows  camera={{ position: [0, 0, posZ], fov: 60 }}>
+        <Canvas shadows  camera={{ position: [0, 0, 8], fov: 70 }}>
         <AdaptiveDpr pixelated />
 ;<CameraShake {...config} />
-          <color attach="background" args={["#0a0c18"]} />
-          <ScrollControls pages={3} damping={0.1}>
+          <ScrollControls pages={2} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
               <Experience  
-          cv={cv} setpoZ={setpoZ} posZ={posZ} section={section} menuOpened={menuOpened} />
+          cv={cv}  section={section} menuOpened={menuOpened} rightBurst={rightBurst} leftBurst={leftBurst}  sceneGroupRef={sceneGroupRef}/>
           <Preload all />
             </Scroll>
             <Scroll html>
-              <Interface />
+              <Interface cv={cv}  leftBurst={leftBurst} setleftBurst={setleftBurst} setrightBurst={setrightBurst} rightBurst={rightBurst}/>
             </Scroll>
           </ScrollControls>
         </Canvas>
+ 
         <Card
           onSectionChange={setSection}
           menuOpened={menuOpened}

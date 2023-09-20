@@ -13,8 +13,9 @@ export const    Card = (props) => {
   Menu
 </button> 
 <button className='btn left'onClick={() => setcv(!cv)} >
-  cv
+Portfolio
 </button>
+
     <div className={`card 
      ${menuOpened ? "w-1/2vw opacity-70 visibility-visible  " : "w-0 opacity-0 visibility-hidden "}
    `}
@@ -34,13 +35,13 @@ export const    Card = (props) => {
    <h1> <a>About</a></h1>
    <h1> <a>Skills</a></h1>
    <h1> <a>Contact</a></h1>
-   <h1>fov <label class="switch">
+   <h1>fov <label className="switch">
   <input type="checkbox" />
-  <span class="slider"></span>
+  <span className="slider"></span>
 </label></h1>
-   <h1>change camera position <label class="switch">
+   <h1>change camera position <label className="switch">
   <input type="checkbox" />
-  <span class="slider"></span>
+  <span className="slider"></span>
 </label></h1>
    <h1><p>hi my name is youcef benziane 
     the about section includes things about my life

@@ -7,7 +7,7 @@ import { Html, Merged, PresentationControls, useGLTF } from '@react-three/drei'
 import {  useFrame, useThree } from '@react-three/fiber';
 import { motion } from 'framer-motion-3d';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import '/home/youcef/Desktop/r3f-vite-starter/src/index.css'
 import About from './about';
 export default function Avatar(props) {
@@ -15,6 +15,16 @@ export default function Avatar(props) {
   const {section,pp,cv} = props;
   const {viewport} = useThree()
 const {group} = useRef()
+const astro = useRef()
+useEffect(()=>{
+  if(astro.current && section == 1){
+  astro.current.rotation.y = -pp+4
+  astro.current.position.x=2
+}else{
+    astro.current.rotation.y=-0.801
+    astro.current.position.x=-2.326
+  }
+},[section])
   useFrame(() => {
    
 
@@ -32,11 +42,11 @@ const {group} = useRef()
         </group>
       </motion.group>
       <motion.group  animate={{
-      y: section === 1 ? -viewport.height*7 : -0.25,
+      y: section === 1 ? -viewport.height*4 : -0.25,
       scale : section === 1 ? [3, 3, 3] : [1, 1, 1],
      
     }}>
-      <mesh castShadow  geometry={nodes.Astronaut_mesh.geometry} material={materials.Astronaut_mat} position={[-2.326, -0.25, -2.342]} rotation={[Math.PI, -0.801, Math.PI]} />
+      <mesh castShadow ref={astro}  geometry={nodes.Astronaut_mesh.geometry} material={materials.Astronaut_mat} position={[-2.326, -0.25, -2.342]} rotation={[Math.PI, -0.801, Math.PI]} />
       </motion.group>
 
 
@@ -46,7 +56,9 @@ const {group} = useRef()
 
      < motion.group castShadow 
   animate={{
-    z: cv==true ? 4: 0
+    z: cv==true ? 8: 0,
+    y: cv==true ? 0.8: 0
+
   }}
     
       >
@@ -55,10 +67,10 @@ const {group} = useRef()
   global={false} // Spin globally or by dragging the model
   cursor={true} // Whether to toggle cursor style on drag
   snap={false} // Snap-back to center (can also be a spring config)
-  speed={1} // Speed factor
+  speed={0.5} // Speed factor
   zoom={1} // Zoom factor when half the polar-max is reached
   rotation={[0, 0, 0]} // Default rotation
-  polar={[0, Math.PI / 2]} // Vertical limits
+  polar={[0, 0]} // Vertical limits
   azimuth={[-Infinity, Infinity]} // Horizontal limits
   config={{ mass: 1, tension: 170, friction: 26 }} // Spring config
 >
@@ -68,11 +80,11 @@ const {group} = useRef()
       <mesh  geometry={nodes.group2115554823.geometry} material={materials.mat15} position={[-0.561, 0.144, 2.755]} rotation={[-Math.PI, 0.288, -Math.PI]} scale={2.422} />
       <mesh group={group} geometry={nodes.group861517382.geometry} material={materials.mat15} position={[-0.561, 0.144, 2.755]} rotation={[-Math.PI, 0.288, -Math.PI]} scale={2.422} />
       <mesh  geometry={nodes.group1262710399.geometry} material={materials.mat17} position={[-0.561, 0.144, 2.755]} rotation={[-Math.PI, 0.288, -Math.PI]} scale={2.422} >
-      <Html wrapperClass='laptop' transform occlude center  distanceFactor={0.1} position={[-0.028,0.32,0.045]} rotation-y={3.10}   rotation-x={-0.10} rotation-z={-0.06}  >
-<div className="iframe">
+      {cv ?<Html  wrapperClass='laptop' transform occlude center  distanceFactor={0.1} position={[-0.0269,0.287,0.045]} rotation-y={3.10}   rotation-x={-0.10} rotation-z={-0.06}  >
+<div  className="iframe">
 <About/>
 </div>
-</Html>
+</Html> : " "}
 
       </mesh>
       <mesh geometry={nodes.group721205586.geometry} material={materials.mat22} position={[-0.561, 0.144, 2.755]} rotation={[-Math.PI, 0.288, -Math.PI]} scale={2.422} />

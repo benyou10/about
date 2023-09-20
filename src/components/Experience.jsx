@@ -1,4 +1,4 @@
-import { Text3D, Image, OrbitControls, SpotLight, Stars, Stats, Text, Float, Cloud, } from "@react-three/drei";
+import { Text3D, Image, OrbitControls, SpotLight, Stars, Float, Cloud, Text, } from "@react-three/drei";
 import Avatar  from "./Avatar";
 import { useEffect, useRef } from "react";
 import {motion} from 'framer-motion-3d'
@@ -8,60 +8,63 @@ import { animate, useMotionValue } from "framer-motion";
 import { useState } from "react";
 
 
-
 export const Experience = (props) => {
-  const {cv,menuOpened,posZ,setpoZ,section} = props;
-  const sceneGroupRef = useRef();
+  const {sceneGroupRef,cv,menuOpened,posZ,setpoZ,section,leftBurst,rightBurst} = props;
   const [pp, setPp] = useState(0);
-  const cameraPositionX = useMotionValue();
-  const cameraPositiony = useMotionValue();
-  useEffect(() => {
-    animate(cameraPositionX, 50);
-    setpoZ(50);
+  const cameraPositionX = useMotionValue(50);
+  const cameraPositionnX = useMotionValue(50);
+
+  const cameraPositiony = useMotionValue(0);
+
   
-  }, []);
   useEffect(() => {
 
   
   }, [section]);
 
   useEffect(() => {
-    animate(cameraPositionX, menuOpened ? 18 :8, {
-      type: "spring",
-      mass: 100,
+    animate(cameraPositiony, menuOpened ? 8 :0, {
+      mass: 500,
    
-      damping: 500,
+      damping: 100,
       restDelta: 0.0005,
     });
   
-    animate(cameraPositiony, menuOpened ? 8 : 0);
   }, [menuOpened]);
   useEffect(() => {
-    animate(cameraPositionX, cv ? 2.2:8, {
+    animate(cameraPositionnX, cv ? 3.4:8, {
       type: "spring",
       mass: 100,
    
-      damping: 500,
+      damping: 300,
       restDelta: 0.0005,
     });
   
-    animate(cameraPositiony, cv ? -0.25 : 0);
   }, [cv]);
+  useEffect(() => {
+    sceneGroupRef.current.rotation.y += 0.3
 
+  }, [leftBurst]);
+  useEffect(() => {
+    sceneGroupRef.current.rotation.y -= 0.3
+
+  }, [rightBurst]);
+ 
   useFrame((state) => {
     state.camera.position.z = cameraPositionX.get();
+    state.camera.position.z = cameraPositionnX.get();
+
     state.camera.position.y = cameraPositiony.get();
-  
+
+
   });
  
 
-  // Define the rotation speed (in radians per frame)
   const rotationSpeed = 0.0006;
 
-  // Use the useFrame hook to update the rotation of the scene group
+
   useFrame(() => {
     if (sceneGroupRef.current && section === 0) {
-      // Rotate the scene group along the Y-axis
       
       sceneGroupRef.current.rotation.y += rotationSpeed;
       setPp(sceneGroupRef.current.rotation.y)
@@ -77,7 +80,6 @@ export const Experience = (props) => {
    
 
     if (cv === true) {
-      // Calculate the rotation angle to make the laptop face the camera
     
       sceneGroupRef.current.rotation.y = 0;
     }
@@ -89,21 +91,16 @@ export const Experience = (props) => {
      <group position={[5,0,4]}    >
      </group>
      <Stars color="blue" depth={50}/>
-     <Stats/>
      <Stars />
      <ambientLight intensity={0.1} />
      <directionalLight intensity={0.7} />
       <group position={[1,0,-2]}>
-     {//<Image  rotation-y={180} url="public/models/IMG_20230520_170007~2cccc.jpg" /> 
-}
+   
      </group>
      
      
-     { /*<Text3D font={"/Death Star_Regular.json"} color={"blue"} >
-     <meshNormalMaterial />
-      ffff
-     </Text3D>*/}
-     <Text
+   
+   <Text
         fontSize={0.3} // Adjust the font size as needed
         position={[5, 0, -2]}
         rotateX={5}
@@ -147,6 +144,7 @@ export const Experience = (props) => {
   <motion.group 
      
      > 
+     
 <Avatar section={section} pp={pp} cv={cv}  />
 </motion.group>
 </group>

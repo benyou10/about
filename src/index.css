@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @font-face {
   font-family: death;
   src: url(/home/youcef/Desktop/r3f-vite-starter/src/death_star/Death Star.otf);
@@ -10,6 +12,8 @@
 #root {
   width: 100vw;
   height: 100vh;
+  background: rgb(15,13,32);
+  background: linear-gradient(350deg, rgba(15,13,32,1) 0%, rgba(0,16,36,1) 5%, rgba(10,12,24,1) 19%, rgba(0,0,0,1) 38%, rgba(0,0,0,1) 100%); 
 }
 .btn ,.btn::after {
   padding: 10px 50px;
@@ -45,17 +49,21 @@
   
 
 }
+.midlle{
+  left: 50%;
+  transform: translateX(-50%);
+
+}
 .left{
-  left: 30px !important;
+  left: 40vw !important;
 }
 .btn{
   position: absolute;
-  right: 30px;
+  right: 40vw;
   top: 10px;
    /* Sets the font size to 100px */
-  color: transparent;
-  text-shadow: #CEB7FF;
-  -webkit-text-stroke: 1.5px #CEB7FF;
+  color: #CEB7FF;
+ 
 }
 .card h1{
   color: white !important;
@@ -285,12 +293,14 @@
   text-align: center; /* Centers the text horizontally */
    /* Applies the "death" font (if available) */
   width: 100vw !important; /* Sets the width of the element to 1000px */
-  font-size: 100px; /* Sets the font size to 100px */
  color: transparent;
  text-shadow: #CEB7FF;
  -webkit-text-stroke: 1.5px #CEB7FF;
 }
-
+.card.about{
+  background: white;
+  width: 60%;
+}
 .card {
   
 position: absolute;
@@ -459,6 +469,41 @@ button svg {
 }
 .laptop .iframe{
   width :900px;
-  height: 700px;
+  height: 700px !important ;
+ background-image: url(/public/vaporwave-purple-windows-xp-windows-98-wallpaper-preview.jpg) ;
+ background-size: cover;
+ background-repeat: no-repeat;
+ border: none;
+ border-radius: 20px;
+}
+.Linkdin{
+  max-width: 200px;
+}
+.cv{
+  max-width: 100px;
+  margin-left: 50px;
+}
+p{
+  color: white;
+  font-size: larger;
+  margin-left: 70px;
+}
+.planetBlue{
+
+  position: absolute;
+  top: 40%;
+ 
+}
+.shifter {
+  height: 30%;
+  width: 17%;
+  position: absolute;
+  top: 10%;
   
 }
+.shifter.right{
+  right: 10% ;
+  }
+  .shifter.left{
+    left: 10% !important;
+    }
