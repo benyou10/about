@@ -11,6 +11,7 @@ import { ScrollManager } from "./components/ScrollManager";
 import {Card }from "./components/card";
 import { framerMotionConfig } from "./config";
 import { MotionConfig } from "framer-motion";
+import { LoadingScreen } from "./components/LoadingScreen";
 
 function App() {
   const [section, setSection] = useState(0);
@@ -36,13 +37,14 @@ const config = {
 
   return (
     <>
+   <LoadingScreen/>
     <MotionConfig
         transition={{
           ...framerMotionConfig,
         }}
       >
         
-        <Canvas shadows  camera={{ position: [0, 0, 8], fov: 70 }}>
+        <Canvas shadows  camera={{ position: [0, 0, 8], fov: 60 }}>
         <AdaptiveDpr pixelated />
 ;<CameraShake {...config} />
           <ScrollControls pages={2} damping={0.1}>
