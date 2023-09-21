@@ -1,5 +1,5 @@
 import React from 'react';
-import '/home/youcef/Desktop/r3f-vite-starter/src/index.css'
+import 'src/index.css'
 export const    Card = (props) => {
   const { cv,setcv,onSectionChange, menuOpened, setMenuOpened } = props;
 

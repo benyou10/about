@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '/home/youcef/Desktop/r3f-vite-starter/src/index.css'
+import 'src/index.css'
 import { motion} from 'framer-motion';
 
 const Skills = [
