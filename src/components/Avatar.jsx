@@ -8,7 +8,7 @@ import {  useFrame, useThree } from '@react-three/fiber';
 import { motion } from 'framer-motion-3d';
 
 import { useEffect, useRef } from 'react';
-import 'src/index.css'
+import '../index.css'
 import About from './about';
 export default function Avatar(props) {
   const { nodes, materials } = useGLTF('/models/subfinal.glb')

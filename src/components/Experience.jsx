@@ -3,7 +3,7 @@ import Avatar  from "./Avatar";
 import { useEffect, useRef } from "react";
 import {motion} from 'framer-motion-3d'
 import { useFrame } from "@react-three/fiber";
-import 'src/index.css'
+import '../index.css'
 import { animate, useMotionValue } from "framer-motion";
 import { useState } from "react";
 

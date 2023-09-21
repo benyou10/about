@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import 'src/index.css'
+import '../index.css'
 import { motion} from 'framer-motion';
 
 

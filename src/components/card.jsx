@@ -1,5 +1,5 @@
 import React from 'react';
-import 'src/index.css'
+import '../index.css'
 export const    Card = (props) => {
   const { cv,setcv,onSectionChange, menuOpened, setMenuOpened } = props;
 

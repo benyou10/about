@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'src/index.css'
+import '../index.css'
 import { motion} from 'framer-motion';
 
 const Skills = [
@@ -62,6 +62,7 @@ function About() {
   const [openAboutMe,setopenAboutMe]=useState(false)
   return (
     <table >
+      
       <th><td></td>
       <td></td> <td></td></th>
       <tbody>
