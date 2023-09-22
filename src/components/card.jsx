@@ -8,7 +8,7 @@ export const    Card = (props) => {
 
 
     
-   < div >
+    < div >
     <input type="checkbox" id="checkbox"/>
     <label for="checkbox" class="toggle">
         <div class="bars" id="bar1"></div>
