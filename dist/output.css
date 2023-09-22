@@ -1168,7 +1168,7 @@ input:checked + .slider:before {
 .laptop .iframe{
   width :900px;
   height: 700px !important ;
-  background-image: url('public/vaporwave-purple-windows-xp-windows-98-wallpaper-preview.jpg') ;
+  background-image: url('../dist/vaporwave-purple-windows-xp-windows-98-wallpaper-preview.jpg') ;
   background-size: cover;
   background-repeat: no-repeat;
   border: none;
