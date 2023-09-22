@@ -44,10 +44,10 @@ const config = {
         }}
       >
         
-        <Canvas shadows  camera={{ position: [0, 0, 8], fov: 60 }}>
+        <Canvas shadows  camera={{ position: [0, 0, 8], fov: 90 }}>
         <AdaptiveDpr pixelated />
 ;<CameraShake {...config} />
-          <ScrollControls pages={2} damping={0.1}>
+          <ScrollControls pages={4} >
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
                  <Suspense>
