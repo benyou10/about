@@ -2,7 +2,7 @@ import { AdaptiveDpr, CameraShake, Preload, Scroll, ScrollControls } from "@reac
 import { Canvas, useFrame } from "@react-three/fiber";
 
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 import { Experience } from "./components/Experience";
 import { Interface } from "./components/interface";
@@ -20,7 +20,7 @@ function App() {
   const sceneGroupRef = useRef();
   const [rightBurst, setrightBurst] = useState(false);
   const [leftBurst, setleftBurst] = useState(false);
-
+  const [started, setStarted] = useState(false);
 
 const config = {
   maxYaw: cv == true ? 0.03   :0.09, 
@@ -37,7 +37,7 @@ const config = {
 
   return (
     <>
-   <LoadingScreen/>
+   <LoadingScreen started={started} setStarted={setStarted} />
     <MotionConfig
         transition={{
           ...framerMotionConfig,
@@ -50,12 +50,17 @@ const config = {
           <ScrollControls pages={2} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
+                 <Suspense>
+                {started && (
               <Experience  
           cv={cv}  section={section} menuOpened={menuOpened} rightBurst={rightBurst} leftBurst={leftBurst}  sceneGroupRef={sceneGroupRef}/>
-          <Preload all />
+       
+          )}
+             <Preload all />
+          </Suspense>
             </Scroll>
             <Scroll html>
-              <Interface cv={cv}  leftBurst={leftBurst} setleftBurst={setleftBurst} setrightBurst={setrightBurst} rightBurst={rightBurst}/>
+            {started && <Interface cv={cv}  leftBurst={leftBurst} setleftBurst={setleftBurst} setrightBurst={setrightBurst} rightBurst={rightBurst}/>}
             </Scroll>
           </ScrollControls>
         </Canvas>
