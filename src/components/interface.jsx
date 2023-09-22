@@ -106,7 +106,7 @@ const {cv,setleftBurst,leftBurst,setrightBurst,rightBurst}=props
         <div  >
 
 
-<h1  className='youcef  text-4xl md:text-[100px]' >youcef benziane </h1>
+<h1  className='youcef md:mt-7 text-4xl md:text-[100px]' >youcef benziane </h1>
 
 </div>
 

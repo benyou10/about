@@ -102,7 +102,7 @@ export const Experience = (props) => {
    
    <Text
         fontSize={0.3} // Adjust the font size as needed
-        position={[5, 0, -2]}
+        position={[3.5, 0, -2]}
         rotateX={5}
         color="blue" // Specify the text color
         anchorX="center" // Center the text horizontally
@@ -117,7 +117,7 @@ export const Experience = (props) => {
   
       <Text
         fontSize={0.3} // Adjust the font size as needed
-        position={[-5, 0, -2]}
+        position={[-3.5, 0, -2]}
         rotateX={5}
         color="white" // Specify the text color
         anchorX="center" // Center the text horizontally
