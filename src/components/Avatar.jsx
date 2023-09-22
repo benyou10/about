@@ -57,7 +57,8 @@ useEffect(()=>{
      < motion.group castShadow 
   animate={{
     z: cv==true ? 8: 0,
-    y: cv==true ? 0.8: 0
+    y: cv==true ? 0.8: 0,
+    rotateY: cv ==true ? 0.2 : 0
 
   }}
     

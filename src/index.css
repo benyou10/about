@@ -55,11 +55,11 @@
 
 }
 .left{
-  left: 40vw !important;
+  left: 10px !important;
 }
 .btn{
   position: absolute;
-  right: 40vw;
+  right: 10px;
   top: 10px;
    /* Sets the font size to 100px */
   color: #CEB7FF;
