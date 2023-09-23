@@ -95,7 +95,7 @@ function Section(props) {
 
 export function Interface(props) {
 const {cv,setleftBurst,leftBurst,setrightBurst,rightBurst}=props
-
+const [show,setshow]=useState(true);
  const togglelright = () =>{
   setrightBurst(!rightBurst)
  }
@@ -120,17 +120,17 @@ const {cv,setleftBurst,leftBurst,setrightBurst,rightBurst}=props
 
       <Section >
         <button onClick={togglelright} className='shifter right' ></button><button onMouseDown={toggleleft} className='shifter left'></button>
-      <div class="cookie-card" >
+     {show == true ? <div class="cookie-card" >
         <img src="/ykb.JPG" alt="my photo" />
     <span class="title"> HI welcome to my website</span>
     <p class="description">you can toggle right or left to turn the scene, or you can click on the icon below , it will gives you 2 option you can view my resume or you can toggle the menu and change the settings like the fov </p>
     <div class="actions">
       
-        <button class="accept">
+        <button onClick={()=>setshow(false)} class="accept">
             thanks
         </button>
     </div>
-</div>
+</div>:<div></div>  }
       </Section>
 
   
