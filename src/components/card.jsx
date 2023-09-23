@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../index.css'
 export const    Card = (props) => {
   const { cv,setcv,onSectionChange, menuOpened, setMenuOpened } = props;
-
+  const [setting, setSetting] = useState(false);
+const togglesetting = ()=>{
+  setSetting(!setting);
+}
   return (
 
 
 
     
     < div >
-    <input type="checkbox" id="checkbox"/>
-    <label for="checkbox" class="toggle">
+    <input onClick={togglesetting} type="checkbox" id="checkbox"/>
+    <label htmlFor="checkbox" class="toggle">
         <div class="bars" id="bar1"></div>
         <div class="bars" id="bar2"></div>
         <div class="bars" id="bar3"></div>
-    </label>{/*
-<button className='btn'onClick={() => setMenuOpened(!menuOpened)} >
+    </label>
+  {setting == true ? <div><button className='btn'onClick={() => setMenuOpened(!menuOpened)} >
   Menu
 </button> 
 <button className='btn left'onClick={() => setcv(!cv)} >
 Portfolio
-  </button>*/}
+  </button></div> : <div></div>}
+
 
     <div className={`card 
      ${menuOpened ? "w-1/2vw opacity-70 visibility-visible  " : "w-0 opacity-0 visibility-hidden "}
