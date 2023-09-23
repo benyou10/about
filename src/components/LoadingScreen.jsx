@@ -1,27 +1,28 @@
 import { useProgress } from "@react-three/drei";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import '../index.css'
 
 export const LoadingScreen = (props) => {
   const { started, setStarted } = props;
   const { progress, total, loaded, item } = useProgress();
-
+const [starting,setstarting]= useState(false)
   useEffect(() => {
     console.log(progress, total, loaded, item);
     if (progress === 100) {
       setTimeout(() => {
-        setStarted(true);
+        setstarting(true);
       }, 500);
     }
   }, [progress, total, loaded, item]);
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full z-50 transition-opacity duration-1000 pointer-events-none
+      className={`fixed top-0 left-0 w-full h-full z-50 transition-opacity duration-1000 
   flex items-center justify-center bg-black 
-  ${started ? "opacity-0" : "opacity-100"}`}
+  ${started ? "opacity-0 hidden " : "opacity-100"}`}
     >
-   <div class="svg-frame">
+		{ starting == false ?
+   <div class="svg-frame ">
 	<svg style={{ "--i": 0,"--j": 0,}}>
 		<g id="out1">
 			<path d="M72 172C72 116.772 116.772 72 172 72C227.228 72 272 116.772 272 172C272 227.228 227.228 272 172 272C116.772 272 72 227.228 72 172ZM197.322 172C197.322 158.015 185.985 146.678 172 146.678C158.015 146.678 146.678 158.015 146.678 172C146.678 185.985 158.015 197.322 172 197.322C185.985 197.322 197.322 185.985 197.322 172Z"></path>
@@ -65,7 +66,19 @@ export const LoadingScreen = (props) => {
 		<path fill="#00FFFF" d="M172 166.445C175.068 166.445 177.556 168.932 177.556 172C177.556 175.068 175.068 177.556 172 177.556C168.932 177.556 166.444 175.068 166.444 172C166.444 168.932 168.932 166.445 172 166.445ZM172 177.021C174.773 177.021 177.021 174.773 177.021 172C177.021 169.227 174.773 166.979 172 166.979C169.227 166.979 166.979 169.227 166.979 172C166.979 174.773 169.227 177.021 172 177.021Z" id="center"></path>
 	</svg>
 
-</div>
+</div> :
+<button onClick={()=>setStarted(true)} class="bbtn" type="button">
+  <strong>START</strong>
+  <div id="container-stars">
+    <div id="stars"></div>
+  </div>
+
+  <div id="glow">
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</button>
+}
     </div>
   );
 };

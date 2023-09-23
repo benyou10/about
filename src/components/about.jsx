@@ -72,10 +72,13 @@ function About() {
      <p>LInkedin</p></a>
      <a href="https://www.indeed.com/"> <img className=' Linkdin' src="/pngegg.png" alt="" />
      <p>indeed</p></a>
+     <a href="/Sample_CV.pdf" download={true} >
      <img className='cv english' src="/pngegg(1).png" alt="" />
-     <p>cv in english</p>
+     <p>cv in english</p></a>
+     <a href="/Sample_CV.pdf" download={true} >
+
      <img className='cv german' src="/pngegg(1).png" alt="" />
-     <p>cv in french</p>
+     <p>cv in french</p></a>
    
      <div className={`card about
      ${openAboutMe ? "w-1/2vw opacity-100 visibility-visible  " : "w-0 opacity-0 visibility-hidden "}
