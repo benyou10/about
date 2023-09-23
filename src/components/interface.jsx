@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../index.css'
 import { motion} from 'framer-motion';
 import { ValidationError, useForm } from "@formspree/react";
-
+import sound from '/sounds/mixkit-rocket-engine-ignition-rumble-1715.wav'
 const ContactSection = () => {
   const [state, handleSubmit] = useForm("xyyqndjp");
   return (
@@ -94,8 +94,16 @@ function Section(props) {
 }
 
 export function Interface(props) {
-const {cv,setleftBurst,leftBurst,setrightBurst,rightBurst}=props
+
+
+
+const {cv,setleftBurst,leftBurst,setrightBurst,rightBurst,started}=props
 const [show,setshow]=useState(true);
+useEffect(()=>{
+  if(started == true)
+  new Audio(sound).play();
+
+},[started])
  const togglelright = () =>{
   setrightBurst(!rightBurst)
  }

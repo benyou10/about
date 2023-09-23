@@ -59,7 +59,7 @@ const config = {
           </Suspense>
             </Scroll>
             <Scroll html>
-            {started && <Interface cv={cv}  leftBurst={leftBurst} setleftBurst={setleftBurst} setrightBurst={setrightBurst} rightBurst={rightBurst}/>}
+            {started && <Interface cv={cv} started={started}  leftBurst={leftBurst} setleftBurst={setleftBurst} setrightBurst={setrightBurst} rightBurst={rightBurst}/>}
             </Scroll>
           </ScrollControls>
         </Canvas>
