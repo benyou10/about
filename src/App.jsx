@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 
 
 import { Suspense, useEffect, useRef, useState } from "react";
+import disableScroll from 'disable-scroll';
 
 import { Experience } from "./components/Experience";
 import { Interface } from "./components/interface";
@@ -33,6 +34,11 @@ const config = {
   decayRate: 0.65, 
   controls: undefined, 
 }
+useEffect(()=>{
+ cv == true ? disableScroll.on(): disableScroll.off()
+ menuOpened == true ? disableScroll.on(): disableScroll.off()
+
+},[cv,menuOpened])
 
   return (
     <>
@@ -46,7 +52,7 @@ const config = {
         <Canvas shadows  camera={{ position: [0, 0, 8], fov: window.innerWidth < 600 ? 90 :60  }}>
         <AdaptiveDpr pixelated />
 ;<CameraShake {...config} />
-          <ScrollControls pages={4} >
+          <ScrollControls pages={3} damping={0.2} >
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
                  <Suspense>
@@ -63,15 +69,16 @@ const config = {
             </Scroll>
           </ScrollControls>
         </Canvas>
- 
+        {started && 
         <Card
+        section={section}
           onSectionChange={setSection}
           menuOpened={menuOpened}
           setMenuOpened={setMenuOpened}
           setcv={setcv}
           cv={cv}
 
-        />
+        />}
      </MotionConfig>
  
     

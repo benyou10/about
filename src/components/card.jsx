@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../index.css'
 export const    Card = (props) => {
-  const { cv,setcv,onSectionChange, menuOpened, setMenuOpened } = props;
-  const [setting, setSetting] = useState(false);
+  const { cv,setcv,onSectionChange, menuOpened, setMenuOpened,section } = props;
+  const [setting, setSetting] = useState(false);const [show,setshow]=useState(false);
+
 const togglesetting = ()=>{
   setSetting(!setting);
 }
+useEffect(()=>{setTimeout(() => {
+  setshow(true)
+}, 6000);},[])
+
   return (
 
-
-
+<>
+{section == 0 && 
     
     < div >
-    <input onClick={togglesetting} type="checkbox" id="checkbox"/>
+    {show == true ?<> <input onClick={togglesetting} type="checkbox" id="checkbox"/>
     <label htmlFor="checkbox" class="toggle">
         <div class="bars" id="bar1"></div>
         <div class="bars" id="bar2"></div>
         <div class="bars" id="bar3"></div>
-    </label>
+    </label></> :<></>}
+   
   {setting == true ? <div><button className='btn'onClick={() => setMenuOpened(!menuOpened)} >
   Menu
 </button> 
@@ -59,6 +65,6 @@ Portfolio
       </div>
     </div>
     </div>
-  );
+  }</>);
 }
 

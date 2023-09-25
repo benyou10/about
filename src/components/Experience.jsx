@@ -11,22 +11,20 @@ import { useState } from "react";
 export const Experience = (props) => {
   const {sceneGroupRef,cv,menuOpened,posZ,setpoZ,section,leftBurst,rightBurst} = props;
   const [pp, setPp] = useState(0);
-  const cameraPositionX = useMotionValue(50);
-  const cameraPositionnX = useMotionValue(50);
+  const cameraPositionX = useMotionValue(100);
+  const cameraPositionnX = useMotionValue(100);
 
   const cameraPositiony = useMotionValue(0);
 
   
-  useEffect(() => {
-
   
-  }, [section]);
 
   useEffect(() => {
     animate(cameraPositiony, menuOpened ? 8 :0, {
-      mass: 500,
+
+      mass: 1000,
    
-      damping: 100,
+      damping: 300,
       restDelta: 0.0005,
     });
   

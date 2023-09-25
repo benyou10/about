@@ -96,17 +96,16 @@ function Section(props) {
 export function Interface(props) {
 
 
-
 const {cv,setleftBurst,leftBurst,setrightBurst,rightBurst,started}=props
 const [show,setshow]=useState(false);
 
 useEffect(()=>{
   if(started==true)
   new Audio(sound).play()
-},[])
+  document.body.classList.add("no-scroll")},[])
   useEffect(()=>{setTimeout(() => {
     setshow(true)
-  }, 3000);},[])
+  }, 6000);},[])
 
  const togglelright = () =>{
   setrightBurst(!rightBurst)
@@ -153,12 +152,12 @@ useEffect(()=>{
       
         
      <ContactSection/>
-     <Section >
-      
-      </Section>
+  
       <Section >
-      
+       
       </Section>
+  
+  
   
      
     </>
