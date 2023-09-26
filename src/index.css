@@ -984,4 +984,43 @@ p{
       transform: translateY(200%);
     }
   
+    .button-container {
+      position: absolute;
+      bottom: 5%;
+      right: 50%;
+      transform: translateX(50%);
+      display: flex;
+      background-color: transparent;
+      border:#CEB7FF 2px solid ;
+      width: 250px;
+      height: 40px;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 10px;
+   
+    }
     
+    .button {
+      outline: 0 !important;
+      border: 0 !important;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #CEB7FF;
+      font-family: death;
+      letter-spacing: 3px;
+      transition: all ease-in-out 0.3s;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      transform: translateY(-3px);
+    }
+    
+    .icon {
+      font-size: 20px;
+    }

@@ -4,9 +4,6 @@ export const    Card = (props) => {
   const { cv,setcv,onSectionChange, menuOpened, setMenuOpened,section } = props;
   const [setting, setSetting] = useState(false);const [show,setshow]=useState(false);
 
-const togglesetting = ()=>{
-  setSetting(!setting);
-}
 useEffect(()=>{setTimeout(() => {
   setshow(true)
 }, 6000);},[])
@@ -17,20 +14,20 @@ useEffect(()=>{setTimeout(() => {
 {section == 0 && 
     
     < div >
-    {show == true ?<> <input onClick={togglesetting} type="checkbox" id="checkbox"/>
-    <label htmlFor="checkbox" class="toggle">
-        <div class="bars" id="bar1"></div>
-        <div class="bars" id="bar2"></div>
-        <div class="bars" id="bar3"></div>
-    </label></> :<></>}
-   
-  {setting == true ? <div><button className='btn'onClick={() => setMenuOpened(!menuOpened)} >
-  Menu
-</button> 
-<button className='btn left'onClick={() => setcv(!cv)} >
-Portfolio
-  </button></div> : <div></div>}
+    {show == true ?<> <div class="button-container">
+      <button class="button" onClick={() => setMenuOpened(!menuOpened)}  >
+        <h1>menu</h1>
+      </button>
+  
+     
 
+      <button class="button" onClick={() => setcv(!cv)}>
+      <h1>resume</h1>
+      </button>
+    </div></> :<></>}
+
+   
+  
 
     <div className={`card 
      ${menuOpened ? "w-1/2vw opacity-70 visibility-visible  " : "w-0 opacity-0 visibility-hidden "}
