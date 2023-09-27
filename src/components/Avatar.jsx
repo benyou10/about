@@ -18,8 +18,7 @@ const {group} = useRef()
 const astro = useRef()
 useEffect(()=>{
   if(astro.current && section == 1){
-  astro.current.rotation.y = -pp+4
-  astro.current.position.x=2
+  astro.current.rotation.y = -pp
 }else{
     astro.current.rotation.y=-0.801
     astro.current.position.x=-2.326
@@ -56,9 +55,10 @@ useEffect(()=>{
 
      < motion.group castShadow 
   animate={{
-    z: cv==true ? 8: 0,
-    y: cv==true ? 0.8: 0,
-    rotateY: cv ==true ? 0.2 : 0
+    z:  cv==true ? 8: 0,
+    y: section === 1 ? -viewport.height*7 : cv==true ? 0.8: 0,
+    rotateY: cv ==true ? 0.2 : 0,
+    scale :  section === 1 ? 5 :1
 
   }}
     

@@ -36,9 +36,8 @@ const config = {
 }
 useEffect(()=>{
  cv == true ? disableScroll.on(): disableScroll.off()
- menuOpened == true ? disableScroll.on(): disableScroll.off()
 
-},[cv,menuOpened])
+},[cv])
 
   return (
     <>
@@ -52,7 +51,7 @@ useEffect(()=>{
         <Canvas shadows  camera={{ position: [0, 0, 8], fov: window.innerWidth < 600 ? 90 :60  }}>
         <AdaptiveDpr pixelated />
 ;<CameraShake {...config} />
-          <ScrollControls pages={3} damping={0.2} >
+          <ScrollControls pages={4} damping={0.2} >
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
                  <Suspense>
