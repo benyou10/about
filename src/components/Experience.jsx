@@ -1,4 +1,4 @@
-import { Text3D, Image, OrbitControls, SpotLight, Stars, Float, Cloud, Text, } from "@react-three/drei";
+import { Text3D, Image, OrbitControls, SpotLight, Stars, Float, Cloud, Text, Environment, } from "@react-three/drei";
 import Avatar  from "./Avatar";
 import { useEffect, useRef } from "react";
 import {motion} from 'framer-motion-3d'
@@ -127,7 +127,6 @@ export const Experience = (props) => {
                   WEB        DEVELOPER
        
       </Text>
-    
      <SpotLight
       color={'#ffffff'}
       intensity={1.3}
