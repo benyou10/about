@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import '../index.css'
+import '../output.css'
 import { motion} from 'framer-motion';
 import { ValidationError, useForm } from "@formspree/react";
 import sound from '/sounds/mixkit-rocket-engine-ignition-rumble-1715.wav'
+const ProjectCard = ({ number, title, location, imgSrc }) => {
+  return (
+    <div className="flex flex-col items-center justify-center ">
+      {imgSrc ? (
+        <div className="max-w-[50%] overflow-hidden rounded-lg ">
+          <img src="Screenshot 2023-09-30 at 10-55-33 Create Next App.png" alt={title} className="object-cover h-full w-full" />
+        </div>
+      ) : (
+        <div className="text-6xl font-bold">{number}</div>
+      )}
+      <div className="text-center mt-2">
+        <div className="text-lg font-semibold">{title}</div>
+        <div className="text-sm text-gray-500">{location}</div>
+      </div>
+      <div className="mt-2 text-gray-500">
+        <span>&#x2192;</span>
+      </div>
+    </div>
+  );
+};
 const ContactSection = () => {
   const [state, handleSubmit] = useForm("xyyqndjp");
   return (
     <>
-      <h2 className="text-3xl md:text-5xl font-bold">Contact me</h2>
-      <div className="mt-8 p-8 rounded-md bg-white bg-opacity-50 w-96 max-w-full">
+      <h2 className="text-3xl lg:ml-9  md:text-5xl font-bold text-white">Contact me</h2>
+      <div className="mt-8 lg:ml-9 p-8 rounded-md bg-red-100 bg-opacity-50 w-96 max-w-full">
         {state.succeeded ? (
           <p className="text-white text-center">Thanks htmlFor your message !</p>
         ) : (
@@ -42,7 +62,7 @@ const ContactSection = () => {
             />
             <label
               htmlFor="email"
-              className="font-medium text-gray-900 block mb-1 mt-8"
+              className="font-medium text-white block mb-1 mt-8"
             >
               Message
             </label>
@@ -73,7 +93,7 @@ function Section(props) {
   const { children } = props;
   return (
     <motion.section className={`
-        w-screen h-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start justify-center
+      ${window.innerWidth > 1000 && "h-screen w-screen"}  p-4 max-w-screen-2xl mx-auto flex flex-col items-start justify-center
         `}    
         initial={{
           opacity:0,
@@ -93,7 +113,43 @@ function Section(props) {
     </motion.section>
   );
 }
+const Skills = [
+  {
+    title : 'react /NEXT js',
+    level : 90
 
+  },
+  {
+    title : 'Android Studio',
+    level : 70
+
+  },
+  {title:'javaScript / typeScript',
+level :90
+}
+  ,
+  {
+    title : 'three js / react three fiber / react three drei' ,
+    level : 70
+  },
+  {
+    title : 'html / css / sass / tailwind-css ',
+    level : 100
+  },
+  {
+    title : 'node / express ',
+    level : 80
+  }
+  ,{
+    title :' php / laravel / blade.php',
+    level :40
+  },
+  {
+    title : 'java / Spring boot',
+    level : 110
+  },
+
+]
 export function Interface(props) {
 
 
@@ -131,260 +187,506 @@ useEffect(()=>{
 
 
       <Section >
-        
-        <button onClick={togglelright} className='shifter right' ></button><button onMouseDown={toggleleft} className='shifter left'></button>
-     {show == true ? <div class="cookie-card" >
-        <img src="/ykb.JPG" alt="my photo" />
-    <span class="title"> HI welcome to my website</span>
-    <p class="description">you can toggle right or left to turn the scene, or you can click on the icon below , it will gives you 2 option you can view my resume or you can toggle the menu and change the settings like the fov </p>
-    <div class="actions">
-      
-        <button onClick={()=>setshow(false)} class={` accept 
-        ${show == false ? "hidden":""}
-        `}>
-            thanks
-        </button>
-    </div>
-</div>:<div></div>  }
+        <div className='W-screen h-screen'></div>
+     
       </Section>
+      
+      <Section>
+      <div className='flex items-center justify-center w-full h-full'>
+  <div className="w-[80%] h-[100%]  ">
+  <div class="grid xl:grid-cols-3 grid-cols-1 gap-5 h-full ">
+  <div class=" flex items-center justify-center bg-opacity-40   rounded-2xl  text-white">
+  <motion.div className='m-2' whileInView={"visible"}
+      
+      >
+    <div><h2 className='text-2xl md:text-5xl font-bold text-white ' >Skills</h2>
+      <div className='mt-8 space-y-4'>
+{Skills.map((skill , index) => ( 
+<div className='w-64' key={index} >
+<motion.h3  className='text-l font-bold text-white'
 
-  
-  <Section>
-<div className='grid ' >
-  <div>
 
-  </div>
+initial={{
+opacity:0,
+}}
+variants={{
+visible :{
+opacity : 1,transition:{
+  duration:1,
+  delay : 1 * index * 0.2
+}
+}
+
+}}
+
+>{skill.title}</motion.h3>
+<motion.div className="h-2 w-full bg-red-200 rounded-full " style={{width : `${skill.level}%`}}
+
+
+initial={{
+scaleX : 0,
+originX : 0
+}}
+variants={{
+visible :{
+  scaleX : 1,transition:{
+  duration:1,
+  delay : 1 * index * 0.2
+}
+}
+
+}}>
+
+</motion.div>
+
 </div>
+))}
+
+      </div>
+      
+      </div>
+      
+      </motion.div>
+    </div>
+ 
+    <div class=" flex items-center justify-center bg-opacity-40 rounded-2xl text-white">
+   
+<div class="max-w-sm bg-red-200 bg-opacity-80 shadow-lg rounded-lg overflow-hidden my-4">
+        <img class="w-full h-56 object-cover object-center" src="Default_web_developer_in_desk_dark_theme_2_ins.webp" alt="avatar"/>
+        
+        <div class="py-4 px-6">
+            <h1 class="text-2xl font-semibold text-gray-800">youcef benziane</h1>
+            <p class="py-2 text-lg text-gray-700">Full Stack developer , i love software engeneering and to build cool UIs.</p>
+           
+            <a href='/Sample_CV.pdf' class="flex justify-start items-center mt-4 text-gray-700">
+            <svg width="25px" height="25px"className='opacity-60' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" ></rect> <path d="M5 12V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V12" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 3L12 15M12 15L16 11M12 15L8 11" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                <a href='/Sample_CV.pdf' class="px-2 text-sm">Resume</a>
+                 
+            </a>
+              
+            <div class="flex justify-start items-center mt-4 text-gray-700">
+            <svg width="25px" height="25px"className='opacity-60' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <rect x="3" y="5" width="18" height="14" rx="2" stroke="#000000" stroke-width="2" stroke-linecap="round"></rect> </g></svg>
+                <h1 class="px-2 text-sm">ybenzian016@gmail.com</h1>
+                 
+            </div>
+            <div class="flex justify-start items-center mt-4 text-gray-700">
+            <svg width="30px" height="30px"className='opacity-60' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.72 3.99997H5.37C5.19793 3.99191 5.02595 4.01786 4.86392 4.07635C4.70189 4.13484 4.55299 4.22471 4.42573 4.34081C4.29848 4.45692 4.19537 4.59699 4.12232 4.75299C4.04927 4.909 4.0077 5.07788 4 5.24997V18.63C4.01008 18.9901 4.15766 19.3328 4.41243 19.5875C4.6672 19.8423 5.00984 19.9899 5.37 20H18.72C19.0701 19.9844 19.4002 19.8322 19.6395 19.5761C19.8788 19.32 20.0082 18.9804 20 18.63V5.24997C20.0029 5.08247 19.9715 4.91616 19.9078 4.76122C19.8441 4.60629 19.7494 4.466 19.6295 4.34895C19.5097 4.23191 19.3672 4.14059 19.2108 4.08058C19.0544 4.02057 18.8874 3.99314 18.72 3.99997ZM9 17.34H6.67V10.21H9V17.34ZM7.89 9.12997C7.72741 9.13564 7.5654 9.10762 7.41416 9.04768C7.26291 8.98774 7.12569 8.89717 7.01113 8.78166C6.89656 8.66615 6.80711 8.5282 6.74841 8.37647C6.6897 8.22474 6.66301 8.06251 6.67 7.89997C6.66281 7.73567 6.69004 7.57169 6.74995 7.41854C6.80986 7.26538 6.90112 7.12644 7.01787 7.01063C7.13463 6.89481 7.2743 6.80468 7.42793 6.74602C7.58157 6.68735 7.74577 6.66145 7.91 6.66997C8.07259 6.66431 8.2346 6.69232 8.38584 6.75226C8.53709 6.8122 8.67431 6.90277 8.78887 7.01828C8.90344 7.13379 8.99289 7.27174 9.05159 7.42347C9.1103 7.5752 9.13699 7.73743 9.13 7.89997C9.13719 8.06427 9.10996 8.22825 9.05005 8.3814C8.99014 8.53456 8.89888 8.6735 8.78213 8.78931C8.66537 8.90513 8.5257 8.99526 8.37207 9.05392C8.21843 9.11259 8.05423 9.13849 7.89 9.12997ZM17.34 17.34H15V13.44C15 12.51 14.67 11.87 13.84 11.87C13.5822 11.8722 13.3313 11.9541 13.1219 12.1045C12.9124 12.2549 12.7546 12.4664 12.67 12.71C12.605 12.8926 12.5778 13.0865 12.59 13.28V17.34H10.29V10.21H12.59V11.21C12.7945 10.8343 13.0988 10.5225 13.4694 10.3089C13.84 10.0954 14.2624 9.98848 14.69 9.99997C16.2 9.99997 17.34 11 17.34 13.13V17.34Z" fill="#000000"></path> </g></svg>
+                <h1 class="px-2 text-sm">linkedin</h1>
+                 
+            </div>
+            <div class="flex justify-start items-center mt-4 text-gray-700">
+              <svg width="30px" height="30px" className='opacity-60' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7.90001C11.1891 7.90001 10.3964 8.14048 9.72218 8.59099C9.04794 9.0415 8.52243 9.68184 8.21211 10.431C7.90179 11.1802 7.8206 12.0046 7.9788 12.7999C8.13699 13.5952 8.52748 14.3258 9.10088 14.8992C9.67427 15.4725 10.4048 15.863 11.2001 16.0212C11.9955 16.1794 12.8198 16.0982 13.569 15.7879C14.3182 15.4776 14.9585 14.9521 15.409 14.2779C15.8596 13.6036 16.1 12.8109 16.1 12C16.1013 11.4612 15.9962 10.9275 15.7906 10.4295C15.585 9.93142 15.2831 9.47892 14.9021 9.09794C14.5211 8.71695 14.0686 8.415 13.5706 8.20942C13.0725 8.00385 12.5388 7.8987 12 7.90001ZM12 14.67C11.4719 14.67 10.9557 14.5134 10.5166 14.22C10.0776 13.9267 9.73534 13.5097 9.53326 13.0218C9.33117 12.5339 9.2783 11.9971 9.38132 11.4791C9.48434 10.9612 9.73863 10.4854 10.112 10.112C10.4854 9.73863 10.9612 9.48434 11.4791 9.38132C11.9971 9.2783 12.5339 9.33117 13.0218 9.53326C13.5097 9.73534 13.9267 10.0776 14.22 10.5166C14.5134 10.9557 14.67 11.4719 14.67 12C14.67 12.7081 14.3887 13.3873 13.888 13.888C13.3873 14.3887 12.7081 14.67 12 14.67ZM17.23 7.73001C17.23 7.9278 17.1714 8.12114 17.0615 8.28558C16.9516 8.45003 16.7954 8.57821 16.6127 8.65389C16.43 8.72958 16.2289 8.74938 16.0349 8.7108C15.8409 8.67221 15.6628 8.57697 15.5229 8.43712C15.3831 8.29727 15.2878 8.11909 15.2492 7.92511C15.2106 7.73112 15.2304 7.53006 15.3061 7.34733C15.3818 7.16461 15.51 7.00843 15.6744 6.89855C15.8389 6.78866 16.0322 6.73001 16.23 6.73001C16.4952 6.73001 16.7496 6.83537 16.9371 7.02291C17.1247 7.21044 17.23 7.4648 17.23 7.73001ZM19.94 8.73001C19.9691 7.48684 19.5054 6.28261 18.65 5.38001C17.7522 4.5137 16.5474 4.03897 15.3 4.06001C14 4.00001 10 4.00001 8.70001 4.06001C7.45722 4.0331 6.25379 4.49652 5.35001 5.35001C4.49465 6.25261 4.03093 7.45684 4.06001 8.70001C4.00001 10 4.00001 14 4.06001 15.3C4.03093 16.5432 4.49465 17.7474 5.35001 18.65C6.25379 19.5035 7.45722 19.9669 8.70001 19.94C10.02 20.02 13.98 20.02 15.3 19.94C16.5432 19.9691 17.7474 19.5054 18.65 18.65C19.5054 17.7474 19.9691 16.5432 19.94 15.3C20 14 20 10 19.94 8.70001V8.73001ZM18.24 16.73C18.1042 17.074 17.8993 17.3863 17.6378 17.6478C17.3763 17.9093 17.064 18.1142 16.72 18.25C15.1676 18.5639 13.5806 18.6715 12 18.57C10.4228 18.6716 8.83902 18.564 7.29001 18.25C6.94608 18.1142 6.63369 17.9093 6.37223 17.6478C6.11076 17.3863 5.90579 17.074 5.77001 16.73C5.35001 15.67 5.44001 13.17 5.44001 12.01C5.44001 10.85 5.35001 8.34001 5.77001 7.29001C5.90196 6.94268 6.10547 6.62698 6.36733 6.36339C6.62919 6.09981 6.94355 5.89423 7.29001 5.76001C8.83902 5.44599 10.4228 5.33839 12 5.44001C13.5806 5.33856 15.1676 5.44616 16.72 5.76001C17.064 5.89579 17.3763 6.10076 17.6378 6.36223C17.8993 6.62369 18.1042 6.93608 18.24 7.28001C18.66 8.34001 18.56 10.84 18.56 12C18.56 13.16 18.66 15.67 18.24 16.72V16.73Z" fill="#000000"></path> </g></svg>
+                <h1 class="px-2 text-sm">instagram</h1>
+                 
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="flex items-center justify-center bg-opacity-40 rounded-2xl text-white">
+      
+      <div className='grid grid-cols-1 gap-6'>
+      <h2 className='text-2xl md:text-5xl font-bold text-white ' >Experience</h2>
+        <div className='h-28 w-80 p-3 rounded-xl bg-red-200 bg-opacity-40'>
+       <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+<g id="SVGRepo_iconCarrier"> <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
+</svg>
+<h1>
+  Computer science degree 2020-2024
+</h1>
+
+
+        </div>
+        <div className='h-28 w-80 p-3 rounded-xl bg-red-200 bg-opacity-40'>
+    <div className='flex space-x-3'>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+    </div>
+    <h1>internship in sonelgaz 2024/2-2024/5</h1>
+</div>
+
+<div className='h-28 w-80 p-3 rounded-xl bg-red-200 bg-opacity-40'>
+    <div className='flex space-x-3'>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+    </div>
+    <h1>NetDoer Software agency </h1>
+</div>
+
+      </div>
+    </div>
+      
+        </div>
+    </div>
+    </div>
+</Section>
+<h1 className='text-2xl md:text-5xl font-bold text-white text-center '>projects</h1>
+
+  <Section>
+    <div className='flex items-center justify-center w-full h-full'>
+  <div className="w-[80%] h-[100%]  bac    bg-black">
+  <div class="grid xl:grid-cols-2 grid-cols-1 gap-5 h-full ">
+  <div class="bg-white flex items-start justify-center bac1 text-white">
+  <video src="2024-03-29 18-02-00.mp4"  className='rounded-xl max-w-[90%] ' autoPlay loop></video>
+  
+    </div>
+    <div class="flex flex-col items-start justify-start p-5 text-white">
+      <div className='flex flex-row ' >
+    <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <h1 className='text-3xl mx-7'>NetDoer</h1>
+        </div>
+        <div >
+  
+ 
+ 
+      <p className='leading-relaxed '>
+        A platform for enhancing knowledge in computer science with interactive learning modules.
+      </p>
+      <ul className='leading-relaxed list-disc list-inside font-bold'>
+        <li>NextJs</li>
+        <li>React threefiber </li>
+        <li>React three drie</li>
+        <li>NextAuth</li>
+
+      </ul>
+    
+   
+   
+  
+    
+    </div>
+    
+       </div>
+    <div class="bg-white flex items-start justify-center bac2 text-white">
+    <video src="2024-03-29 16-43-47.mp4" className='rounded-xl max-w-[90%] ' autoPlay loop></video>
+    </div>
+
+    <div class=" flex items-start justify-center bac4 text-white">
+    <div class="flex flex-col items-start justify-start p-5 text-white">
+      <div className='flex flex-row ' >
+    <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <h1 className='text-3xl mx-7'>bnk Art Galery</h1>
+        </div>
+        <div >
+  
+ 
+ 
+      <p className='leading-relaxed '>
+         custom art gallery for an artist
+      </p>
+      <ul className='leading-relaxed list-disc list-inside font-bold'>
+        <li>NextJs</li>
+        <li>React threefiber </li>
+        <li>React three drie</li>
+       
+
+      </ul>
+    
+   
+   
+  
+    
+    </div>
+    
+       </div>   
+    </div>
+       
+      
+        </div>
+    </div>
+    </div>
+
     
   </Section>
       <Section>
-      <>
-  {/* Features */}
-  <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-    {/* Title */}
-    <div className="mx-auto max-w-2xl mb-8 lg:mb-14 text-center">
-      <h2 className="text-3xl lg:text-4xl text-gray-200">
-        Experience
-      </h2>
-      <p className="mt-3 text-gray-200">
-        this is some of my work and u can see some of the technologies i used
-      </p>
-    </div>
-    {/* End Title */}
-    {/* Grid */}
-    <div className="mx-auto max-w-3xl grid grid-cols-12 gap-6 lg:gap-8">
-      {/* Icon Block */}
-      <div className="col-span-6 sm:col-span-4 text-center">
-        <svg
-          className="mx-auto h-auto w-7 md:w-9 text-gray-200"
-          xmlns="http://www.w3.org/2000/svg"
-          width={16}
-          height={16}
-          fill="currentColor"
-          viewBox="0 0 16 16"
-        >
-          <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
-          <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-        </svg>
-        <div className="mt-2 sm:mt-6">
-          <h3 className="text-lg font-semibold text-gray-200">
-            Responsive
-          </h3>
-        </div>
-      </div>
-      {/* End Icon Block */}
-      {/* Icon Block */}
-      <div className="col-span-6 sm:col-span-4 text-center">
-        <svg
-          className="mx-auto h-auto w-7 md:w-9 text-gray-200"
-          xmlns="http://www.w3.org/2000/svg"
-          width={16}
-          height={16}
-          fill="currentColor"
-          viewBox="0 0 16 16"
-        >
-          <path d="M9.465 10H12a2 2 0 1 1 0 4H9.465c.34-.588.535-1.271.535-2 0-.729-.195-1.412-.535-2z" />
-          <path d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm.535-10a3.975 3.975 0 0 1-.409-1H4a1 1 0 0 1 0-2h2.126c.091-.355.23-.69.41-1H4a2 2 0 1 0 0 4h2.535z" />
-          <path d="M14 4a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
-        </svg>
-        <div className="mt-2 sm:mt-6">
-          <h3 className="text-lg font-semibold text-gray-200">
-            Customizable
-          </h3>
-        </div>
-      </div>
-      {/* End Icon Block */}
-      {/* Icon Block */}
-      <div className="col-span-6 col-start-4 sm:col-span-4 text-center">
-        <svg
-          className="mx-auto h-auto w-7 md:w-9 text-gray-200"
-          xmlns="http://www.w3.org/2000/svg"
-          width={16}
-          height={16}
-          fill="currentColor"
-          viewBox="0 0 16 16"
-        >
-          <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
-          <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-        </svg>
-        <div className="mt-2 sm:mt-6">
-          <h3 className="text-lg font-semibold text-gray-200">
-            24/7 Support
-          </h3>
-        </div>
-      </div>
-      {/* End Icon Block */}
-    </div>
-    {/* End Grid */}
-    {/* Grid */}
-    <div className="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-      <div className="hidden md:block col-span-4 md:col-span-3">
-        <img
-          className="rounded-xl"
-          src="Screenshot 2023-09-30 at 10-49-22 youcef benziane.png"
-          alt="Image Description"
-        />
-      </div>
-      {/* End Col */}
-      <div className="col-span-4 md:col-span-3">
-        <img
-          className="rounded-xl "
-          src="Screenshot 2023-09-30 at 10-52-14 LRDSI.png"
-          alt="Image Description"
-        />
-      </div>
-      {/* End Col */}
-      <div className="col-span-4 md:col-span-3">
-        <img
-          className="rounded-xl"
-          src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=652&q=80"
-          alt="Image Description"
-          
-        />
-      </div>
-      {/* End Col */}
-      <div className="col-span-4 md:col-span-3">
-        <img
-          className="rounded-xl   "
-          src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80"
-          alt="Image Description"
-          
-        />
-      </div>
-      {/* End Col */}
-    </div>
-    {/* End Grid */}
-  </div>
-  {/* End Features */}
-</>
+  
+      <div className='flex items-center justify-center w-full h-full'>
+  <div className="w-[80%] h-[100%]  bac   bg-black">
+  <div class="grid xl:grid-cols-2 grid-cols-1 gap-5 h-full ">
+    {window.innerWidth < 1000 ? (<> 
+      <div class="bg-white flex items-start justify-center  bac1 text-white">
+<video src="2024-06-10 15-31-47.mp4" className='rounded-xl max-w-[90%] ' autoPlay loop></video>
 
+</div>
+    
+<div class=" flex items-start justify-center bac4 text-white">
+    <div class="flex flex-col items-start justify-start p-5 text-white">
+      <div className='flex flex-row ' >
+    <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <h1 className='text-3xl mx-7'>Sonelgaz Hr Platform with Full Access Controll</h1>
+        </div>
+        <div >
+  
+ 
+ 
+      <p className='leading-relaxed '>
+        An Hr platform for the ETB Solengaz for monotoring attendence state 
+      </p>
+      <ul className='leading-relaxed list-disc list-inside font-bold'>
+        <li>NextJs</li>
+        <li>java Spring Boot</li>
+        <li>tailwind</li>
+        <li>mysql</li>
+        <li>React threefiber </li>
+      
+       
+
+      </ul>
+    
+   
+   
+  
+    
+    </div>
+    
+       </div>   
+    </div>
+   <div class="bg-white flex items-start justify-center bac2 text-white">
+<video src="2024-06-10 16-37-01.mp4" className='rounded-xl max-w-[90%] ' autoPlay loop></video>
+</div>
+<div class=" flex items-start justify-center bac4 text-white">
+    <div class="flex flex-col items-start justify-start p-5 text-white">
+      <div className='flex flex-row ' >
+   
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <h1 className='text-3xl mx-7'>portfolio website</h1>
+        </div>
+        <div >
+  
+ 
+ 
+      <p className='leading-relaxed '>
+        A platform for enhancing knowledge in computer science with interactive learning modules.
+      </p>
+      <ul className='leading-relaxed list-disc list-inside font-bold'>
+        <li>html</li>
+        <li>css </li>
+        <li>scss </li>
+        <li>javaScript</li>
+       
+
+      </ul>
+    
+   
+   
+  
+    
+    </div>
+    
+       </div>   
+    </div>
+</>) :(<>  <div class=" flex items-start justify-center bac4 text-white">
+    <div class="flex flex-col items-start justify-start p-5 text-white">
+      <div className='flex flex-row ' >
+    <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <h1 className='text-3xl mx-7'>Sonelgaz Hr Platform with Full Access Controll</h1>
+        </div>
+        <div >
+  
+ 
+ 
+      <p className='leading-relaxed '>
+        A platform for enhancing knowledge in computer science with interactive learning modules.
+      </p>
+      <ul className='leading-relaxed list-disc list-inside font-bold'>
+      <li>NextJs</li>
+        <li>java Spring Boot</li>
+        <li>tailwind</li>
+        <li>mysql</li>
+        <li>React threefiber </li>
+      
+       
+
+      </ul>
+    
+   
+   
+  
+    
+    </div>
+    
+       </div>   
+    </div>
+<div class="bg-white flex items-start justify-center  bac1 text-white">
+<video src="2024-06-10 15-31-47.mp4" className='rounded-xl max-w-[90%] ' autoPlay loop></video>
+
+</div>
+<div class=" flex items-start justify-center bac4 text-white">
+    <div class="flex flex-col items-start justify-start p-5 text-white">
+      <div className='flex flex-row ' >
+    <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12 3L14.5 8.5L21 9L16.5 14L18 20L15 18.5M12 17L6 20L7.5 14L3 9L9.5 8.5L10.6364 6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+     
+        <h1 className='text-3xl mx-7'>portfolio website</h1>
+        </div>
+        <div >
+  
+ 
+ 
+      <p className='leading-relaxed '>
+        A platform for enhancing knowledge in computer science with interactive learning modules.
+      </p>
+      <ul className='leading-relaxed list-disc list-inside font-bold'>
+      <li>html</li>
+        <li>css </li>
+        <li>scss </li>
+        <li>javaScript</li>
+
+      </ul>
+    
+   
+   
+  
+    
+    </div>
+    
+       </div>   
+    </div>
+<div class="bg-white flex items-start justify-center bac2 text-white">
+<video src="2024-06-10 16-37-01.mp4" className='rounded-xl max-w-[90%] ' autoPlay loop></video>
+</div></>)}
+ 
+  
+    
+       
+      
+        </div>
+    </div>
+    </div>
 
       </Section>
         <Section>
 
      <ContactSection/>
 
-     <div className="share">
-  <button className="btn1">
-    <svg
-      fillrule="nonzero"
-      height="30px"
-      width="30px"
-      viewBox="0,0,256,256"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      xmlns="http://www.w3.org/2000/svg"
-      className="instagram"
-    >
-      <g
-        style={{ mixBlendMode: "normal" }}
-        textanchor="none"
-        strokedashoffset={0}
-        strokedasharray=""
-        strokemiterlimit={10}
-        strokelinejoin="miter"
-        strokelinecap="butt"
-        strokewidth={1}
-        stroke="none"
-        fillrule="nonzero"
-      >
-        <g transform="scale(8,8)">
-          <path d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z" />
-        </g>
-      </g>
-    </svg>
-    <span className="tooltiptext1">
-      <div className="cdard">
-        <svg
-          fill="#000000"
-          width="24px"
-          viewBox="0 0 24 24"
-          height="24px"
-          xmlns="http://www.w3.org/2000/svg"
-          className="account"
-        >
-          <path fill="none" d="M0 0h24v24H0V0z" />
-          <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z" />
-        </svg>
-      </div>
-      <div className="username">@meoninsta</div>
-    </span>
-  </button>
-  <button className="btn2">
-    <svg
-      height="30px"
-      width="30px"
-      viewBox="0 0 48 48"
-      xmlns="http://www.w3.org/2000/svg"
-      className="twitter"
-    >
-      <path d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429" />
-    </svg>
-    <span className="tooltiptext2">
-      <div className="cdard">
-        <svg
-          fill="#000000"
-          width="24px"
-          viewBox="0 0 24 24"
-          height="24px"
-          xmlns="http://www.w3.org/2000/svg"
-          className="account"
-        >
-          <path fill="none" d="M0 0h24v24H0V0z" />
-          <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z" />
-        </svg>
-      </div>
-      <div className="username">@meontwitter</div>
-    </span>
-  </button>
-  <button className="btn3">
-    <svg
-      height="30px"
-      width="30px"
-      viewBox="0 0 30 30"
-      xmlns="http://www.w3.org/2000/svg"
-      className="git"
-    >
-      {" "}
-      <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z" />
-    </svg>
-    <span className="tooltiptext3">
-      <div className="cdard">
-        <svg
-          fill="#000000"
-          width="24px"
-          viewBox="0 0 24 24"
-          height="24px"
-          xmlns="http://www.w3.org/2000/svg"
-          className="account"
-        >
-          <path fill="none" d="M0 0h24v24H0V0z" />
-          <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z" />
-        </svg>
-      </div>
-      <div className="username">@meongit</div>
-    </span>
-  </button>
-</div>
 
         </Section>
   

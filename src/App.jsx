@@ -51,7 +51,7 @@ useEffect(()=>{
         <Canvas shadows  camera={{ position: [0, 0, 8], fov: window.innerWidth < 600 ? 90 :60  }}>
         <AdaptiveDpr pixelated />
 ;<CameraShake {...config} />
-          <ScrollControls pages={5} damping={0.2} >
+          <ScrollControls pages={8} damping={0.3} >
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
                  <Suspense>

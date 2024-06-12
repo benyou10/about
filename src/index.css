@@ -65,19 +65,8 @@
   color: #CEB7FF;
  
 }
-.card h1{
-  color: white !important;
-  z-index: 10000;
-  text-align: center;
-  font-size: 4em ;
-  font-family: death;
-}
-.card h1 p{
 
 
-  font-size: 50px !important;
-
-}
 .btn:hover::after {
   animation: glitch_4011 1s;
   text-shadow: 10 10px 10px black;
@@ -96,8 +85,32 @@
   border: 1px solid rgb(0, 255, 213);
   box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
 }
+.bac2{
+  background-color: transparent;}
+.bac3{
+  background-color: #91faea;
+background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd02f' fill-opacity='0.43'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.bac4{
+ background-color: transparent;
+}
+.bac5{
+  background-color: #ee2e27;
+background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h16v2h-6v6h6v8H8v-6H2v6H0V0zm4 4h2v2H4V4zm8 8h2v2h-2v-2zm-8 0h2v2H4v-2zm8-8h2v2h-2V4z' fill='%23d8faff' fill-opacity='0.43' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
 
+.bac{
+  background-color: rgba(0, 0, 0, 0.4);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.43'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.9;
+}
+.bac1{
+  background-color: transparent;
+}
 
+.purplee{
+  background-color: #E94BE8;
+}
 @keyframes glitch_4011 {
   0% {
     clip-path: var(--move1);
@@ -297,24 +310,6 @@
  text-shadow: #CEB7FF;
  -webkit-text-stroke: 1.5px #CEB7FF;
 }
-.card.about{
-  background: white;
-  width: 60%;
-}
-.card {
-  
-position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  
-  height: 50vh;
-  background: #15001f;
-  border: 1px solid #87ea98;
-  font-size: 14px;
-  font-family: monospace;
-  overflow: auto;
-}
 
 .titlebar {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -325,15 +320,6 @@ position: absolute;
   text-align: right;
 }
 
-.card button {
-  width: 40px;
-  height: 35px;
-  margin-left: -5px;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  transition: 0.2s;
-}
 
 button svg path, 
 button svg rect, 
@@ -632,13 +618,7 @@ p{
       transform: rotate(180deg);
      
     }
-    .cookie-card {
-      width: 320px;
-      padding: 1rem; opacity: 0.8;
-      background-color: #CEB7FF;
-      border-radius: 10px;position: absolute;right: 50%;transform: translateX(50%);
-      box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
-    }
+  
     
     .title {
       font-weight: 600;
