@@ -158,7 +158,7 @@ const Video = ({ src, isLoading }) => {
   return (
     <div>
       {
-        !isLoading && <Skeleton/> && (
+        !isLoading && <Skeleton containerClassName="flex-1" count={5} height={100} /> && (
           <video
           preload={true}
           className='rounded-xl max-w-[90%] ' autoPlay loop
