@@ -160,9 +160,11 @@ const Video = ({ src, isLoading }) => {
       {
         !isLoading && <Skeleton/> && (
           <video
+          preload={true}
+          className='rounded-xl max-w-[90%] ' autoPlay loop
             ref={videoRef}
-            autoPlay
-            controls
+            
+          
           >
             <source src={src}  />
           </video>
@@ -415,7 +417,7 @@ visible :{
   <div class="grid xl:grid-cols-2 grid-cols-1 gap-5 h-full ">
   <div class="bg-white flex items-start justify-center bac1 text-white">
   
-<Video src={"2024-03-29 18-02-00.mp4"}/>
+<Video src="2024-03-29 18-02-00.mp4" />
 
     </div>
     <div class="flex flex-col items-start justify-start p-5 text-white">
