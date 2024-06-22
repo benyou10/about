@@ -72,10 +72,10 @@ function About() {
      <p>LInkedin</p></a>
      <a href="https://www.indeed.com/"> <img className=' Linkdin' src="/pngegg.png" alt="" />
      <p>indeed</p></a>
-     <a href="/Sample_CV.pdf" download={true} >
+     <a href="/Modern_Simple_ATS_Friendly_LateX_CV-4.pdf" download={true} >
      <img className='cv english' src="/pngegg(1).png" alt="" />
      <p>cv in english</p></a>
-     <a href="/Sample_CV.pdf" download={true} >
+     <a href="/Modern_Simple_ATS_Friendly_LateX_CV-4.pdf" download={true} >
 
      <img className='cv german' src="/pngegg(1).png" alt="" />
      <p>cv in french</p></a>

@@ -111,6 +111,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox=
 .purplee{
   background-color: #E94BE8;
 }
+
 @keyframes glitch_4011 {
   0% {
     clip-path: var(--move1);
