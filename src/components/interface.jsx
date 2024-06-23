@@ -4,6 +4,7 @@ import { motion} from 'framer-motion';
 import { ValidationError, useForm } from "@formspree/react";
 import sound from '/sounds/mixkit-rocket-engine-ignition-rumble-1715.wav'
 import Skeleton from 'react-loading-skeleton';
+import Footerr from './footer';
 
 const ProjectCard = ({ number, title, location, imgSrc }) => {
   return (
@@ -781,7 +782,9 @@ visible :{
       <Section >
        
       </Section>
-  
+      <Section >
+      <Footerr/>
+       </Section>
   
   
      
