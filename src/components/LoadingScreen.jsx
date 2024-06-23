@@ -22,17 +22,9 @@ console.log(item);
   ${started ? "opacity-0 hidden " : "opacity-100"}`}
     >
 		{ starting == false ?
-   <div class="loader">
-   <div class="square" id="sq1"></div>
-   <div class="square" id="sq2"></div>
-   <div class="square" id="sq3"></div>
-   <div class="square" id="sq4"></div>
-   <div class="square" id="sq5"></div>
-   <div class="square" id="sq6"></div>
-   <div class="square" id="sq7"></div>
-   <div class="square" id="sq8"></div>
-   <div class="square" id="sq9"></div>
- </div> :
+      <div class="flex justify-center items-center h-screen">
+  <div class="rounded-full h-20 w-20 bg-violet-800 animate-ping"></div>
+</div> :
 <button onClick={()=>setStarted(true)} class="bbtn" type="button">
   <strong>START</strong>
   <div id="container-stars">

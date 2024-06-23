@@ -157,9 +157,23 @@ level :90
 
 const Video = ({ src, isLoading }) => {
   const videoRef = useRef();
+  const [isVideoLoading, setIsVideoLoading] = useState(!isLoading);
+
+  useEffect(() => {
+    setIsVideoLoading(isLoading);
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.onloadeddata = () => {
+        setIsVideoLoading(false);
+      };
+    }
+  }, [src]);
+
   return (
-    <div className="flex items-center justify-center">
-      {isLoading ? (
+    <div className="flex items-center justify-center w-full h-full">
+      {isVideoLoading ? (
         <div
           role="status"
           className="flex items-center justify-center h-56 w-[90%] bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"
@@ -178,11 +192,13 @@ const Video = ({ src, isLoading }) => {
         </div>
       ) : (
         <video
-          preload="auto"
+          preload="none"
+          poster='7a8f8d634013568124e130728834d47a.webp'
           className="rounded-xl max-w-[90%]"
           autoPlay
           loop
           ref={videoRef}
+          onLoadedData={() => setIsVideoLoading(false)}
         >
           <source src={src} type="video/mp4" />
         </video>
@@ -644,8 +660,8 @@ visible :{
     
        </div>   
     </div>
-</>) :(<>  <div class=" flex items-start justify-center bac4 text-white">
-    <div class="flex flex-col items-start justify-start p-5 text-white">
+</>) :(<>  <div class=" flex items-start justify-center  text-white">
+    <div class="flex flex-col items-start justify-start  text-white">
       <div className='flex flex-row ' >
     <svg className='block' width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
