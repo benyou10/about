@@ -8,7 +8,7 @@ export const LoadingScreen = (props) => {
 const [starting,setstarting]= useState(false)
   useEffect(() => {
     console.log(progress, total, loaded, item);
-    if (progress === 100) {
+    if (progress === 50) {
       setTimeout(() => {
         setstarting(true);
       }, 1);
@@ -25,17 +25,8 @@ console.log(item);
       <div class="flex justify-center items-center h-screen">
   <div class="rounded-full h-20 w-20 bg-violet-800 animate-ping"></div>
 </div> :
-<button onClick={()=>setStarted(true)} class="bbtn" type="button">
-  <strong>START</strong>
-  <div id="container-stars">
-    <div id="stars"></div>
-  </div>
+setStarted(true)
 
-  <div id="glow">
-    <div class="circle"></div>
-    <div class="circle"></div>
-  </div>
-</button>
 }
     </div>
   );

@@ -123,11 +123,7 @@ const Skills = [
     level : 90
 
   },
-  {
-    title : 'Android Studio',
-    level : 70
-
-  },
+ 
   {title:'javaScript / typeScript',
 level :90
 }
@@ -144,10 +140,7 @@ level :90
     title : 'node / express ',
     level : 80
   }
-  ,{
-    title :' php / laravel / blade.php',
-    level :40
-  },
+  ,
   {
     title : 'java / Spring boot',
     level : 110
@@ -340,7 +333,7 @@ visible :{
     <div class=" flex items-center justify-center bg-opacity-40 rounded-2xl text-white">
    
 <div class="max-w-sm bg-red-200 bg-opacity-80 shadow-lg rounded-lg overflow-hidden my-4">
-        <img class="w-full h-56 object-cover object-center" src="Default_web_developer_in_desk_dark_theme_2_ins.webp" alt="avatar"/>
+        <img class="w-full h-56 object-cover object-center" src="IMG_20230520_170007~2.jpg" alt="avatar"/>
         
         <div class="py-4 px-6">
             <h1 class="text-2xl font-semibold text-gray-800">youcef benziane</h1>
